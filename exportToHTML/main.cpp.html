@@ -1,0 +1,229 @@
+<html>
+<head>
+<title>main.cpp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #95a1b9;}
+.s1 { color: #bcbec4;}
+.s2 { color: #72a44f;}
+.s3 { color: #dfc846; font-weight: bold;}
+.s4 { color: #bcbec4;}
+.s5 { color: #d1d2d6;}
+.s6 { color: #b1b2b7;}
+.s7 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#181818">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.cpp</font>
+</center></td></tr></table>
+<pre><span class="s0">#include </span><span class="s2">&lt;iostream&gt;</span>
+
+<span class="s3">using namespace </span><span class="s1">std</span><span class="s4">;</span>
+
+<span class="s3">class </span><span class="s1">Node </span><span class="s5">{</span>
+<span class="s3">public</span><span class="s4">:</span>
+    <span class="s3">int </span><span class="s1">data</span><span class="s4">;</span>
+    <span class="s1">Node </span><span class="s4">*</span><span class="s1">next</span><span class="s4">;</span>
+<span class="s5">}</span><span class="s4">;</span>
+
+<span class="s3">class </span><span class="s1">List </span><span class="s5">{</span>
+<span class="s3">private</span><span class="s4">:</span>
+    <span class="s3">int </span><span class="s1">count</span><span class="s4">;</span>
+    <span class="s1">Node </span><span class="s4">*</span><span class="s1">head</span><span class="s4">;</span>
+
+<span class="s3">public</span><span class="s4">:</span>
+    <span class="s1">List</span><span class="s5">() {</span>
+        <span class="s1">count </span><span class="s4">= </span><span class="s6">0</span><span class="s4">;</span>
+        <span class="s1">head </span><span class="s4">= </span><span class="s3">nullptr</span><span class="s4">;</span>
+    <span class="s5">}</span>
+
+    <span class="s3">bool </span><span class="s1">isEmpty</span><span class="s5">() {</span>
+        <span class="s3">return </span><span class="s1">count </span><span class="s4">== </span><span class="s6">0</span><span class="s4">;</span>
+    <span class="s5">}</span>
+
+    <span class="s3">int </span><span class="s1">size</span><span class="s5">() {</span>
+        <span class="s3">return </span><span class="s1">count</span><span class="s4">;</span>
+    <span class="s5">}</span>
+
+    <span class="s3">void </span><span class="s1">push</span><span class="s5">(</span><span class="s3">int </span><span class="s1">data</span><span class="s5">) {</span>
+        <span class="s1">Node </span><span class="s4">*</span><span class="s1">new_node </span><span class="s4">= </span><span class="s3">new </span><span class="s1">Node</span><span class="s5">()</span><span class="s4">;</span>
+        <span class="s1">new_node</span><span class="s4">-&gt;</span><span class="s1">data </span><span class="s4">= </span><span class="s1">data</span><span class="s4">;</span>
+        <span class="s1">new_node</span><span class="s4">-&gt;</span><span class="s1">next </span><span class="s4">= </span><span class="s3">nullptr</span><span class="s4">;</span>
+
+        <span class="s3">if </span><span class="s5">(</span><span class="s1">isEmpty</span><span class="s5">()) {</span>
+            <span class="s1">head </span><span class="s4">= </span><span class="s1">new_node</span><span class="s4">;</span>
+        <span class="s5">} </span><span class="s3">else </span><span class="s5">{</span>
+            <span class="s1">new_node</span><span class="s4">-&gt;</span><span class="s1">next </span><span class="s4">= </span><span class="s1">head</span><span class="s4">;</span>
+            <span class="s1">head </span><span class="s4">= </span><span class="s1">new_node</span><span class="s4">;</span>
+        <span class="s5">}</span>
+
+        <span class="s1">count</span><span class="s4">++;</span>
+    <span class="s5">}</span>
+
+
+
+    <span class="s3">void </span><span class="s1">removeDuplicates</span><span class="s5">() {</span>
+        <span class="s3">if </span><span class="s5">(</span><span class="s1">head </span><span class="s4">== </span><span class="s3">nullptr</span><span class="s5">) {</span>
+            <span class="s3">return</span><span class="s4">;</span>
+        <span class="s5">}</span>
+
+        <span class="s1">Node </span><span class="s4">*</span><span class="s1">current </span><span class="s4">= </span><span class="s1">head</span><span class="s4">;</span>
+
+        <span class="s3">while </span><span class="s5">(</span><span class="s1">current </span><span class="s4">!= </span><span class="s3">nullptr</span><span class="s5">) {</span>
+            <span class="s1">Node </span><span class="s4">*</span><span class="s1">runner </span><span class="s4">= </span><span class="s1">current</span><span class="s4">;</span>
+
+            <span class="s3">while </span><span class="s5">(</span><span class="s1">runner</span><span class="s4">-&gt;</span><span class="s1">next </span><span class="s4">!= </span><span class="s3">nullptr</span><span class="s5">) {</span>
+                <span class="s3">if </span><span class="s5">(</span><span class="s1">runner</span><span class="s4">-&gt;</span><span class="s1">next</span><span class="s4">-&gt;</span><span class="s1">data </span><span class="s4">== </span><span class="s1">current</span><span class="s4">-&gt;</span><span class="s1">data</span><span class="s5">) {</span>
+                    <span class="s1">Node </span><span class="s4">*</span><span class="s1">duplicate </span><span class="s4">= </span><span class="s1">runner</span><span class="s4">-&gt;</span><span class="s1">next</span><span class="s4">;</span>
+                    <span class="s1">runner</span><span class="s4">-&gt;</span><span class="s1">next </span><span class="s4">= </span><span class="s1">runner</span><span class="s4">-&gt;</span><span class="s1">next</span><span class="s4">-&gt;</span><span class="s1">next</span><span class="s4">;</span>
+                    <span class="s3">delete </span><span class="s1">duplicate</span><span class="s4">;</span>
+                    <span class="s1">count</span><span class="s4">--;</span>
+                <span class="s5">} </span><span class="s3">else </span><span class="s5">{</span>
+                    <span class="s1">runner </span><span class="s4">= </span><span class="s1">runner</span><span class="s4">-&gt;</span><span class="s1">next</span><span class="s4">;</span>
+                <span class="s5">}</span>
+            <span class="s5">}</span>
+
+            <span class="s1">current </span><span class="s4">= </span><span class="s1">current</span><span class="s4">-&gt;</span><span class="s1">next</span><span class="s4">;</span>
+        <span class="s5">}</span>
+    <span class="s5">}</span>
+
+    <span class="s3">void </span><span class="s1">reverse</span><span class="s5">() {</span>
+        <span class="s3">if </span><span class="s5">(</span><span class="s1">head </span><span class="s4">== </span><span class="s3">nullptr</span><span class="s5">) {</span>
+            <span class="s3">return</span><span class="s4">;</span>
+        <span class="s5">}</span>
+
+        <span class="s7">// Aponta para o topo da lista</span>
+        <span class="s1">Node </span><span class="s4">*</span><span class="s1">current </span><span class="s4">= </span><span class="s1">head</span><span class="s4">;</span>
+
+        <span class="s1">Node </span><span class="s4">*</span><span class="s1">previous </span><span class="s4">= </span><span class="s3">nullptr</span><span class="s4">;</span>
+        <span class="s1">Node </span><span class="s4">*</span><span class="s1">next </span><span class="s4">= </span><span class="s3">nullptr</span><span class="s4">;</span>
+
+        <span class="s3">while </span><span class="s5">(</span><span class="s1">current </span><span class="s4">!= </span><span class="s3">nullptr</span><span class="s5">) {</span>
+            <span class="s7">// Guarda o próximo nó</span>
+            <span class="s1">next </span><span class="s4">= </span><span class="s1">current</span><span class="s4">-&gt;</span><span class="s1">next</span><span class="s4">;</span>
+
+            <span class="s7">// Inverte o ponteiro do nó atual</span>
+            <span class="s1">current</span><span class="s4">-&gt;</span><span class="s1">next </span><span class="s4">= </span><span class="s1">previous</span><span class="s4">;</span>
+
+            <span class="s7">// Atualiza os ponteiros</span>
+            <span class="s1">previous </span><span class="s4">= </span><span class="s1">current</span><span class="s4">;</span>
+
+            <span class="s7">// Atualiza o nó atual</span>
+            <span class="s1">current </span><span class="s4">= </span><span class="s1">next</span><span class="s4">;</span>
+        <span class="s5">}</span>
+
+        <span class="s7">// Atualiza o topo da lista</span>
+        <span class="s1">head </span><span class="s4">= </span><span class="s1">previous</span><span class="s4">;</span>
+    <span class="s5">}</span>
+
+    <span class="s3">void </span><span class="s1">print</span><span class="s5">() {</span>
+        <span class="s1">Node </span><span class="s4">*</span><span class="s1">current </span><span class="s4">= </span><span class="s1">head</span><span class="s4">;</span>
+
+        <span class="s3">while </span><span class="s5">(</span><span class="s1">current </span><span class="s4">!= </span><span class="s3">nullptr</span><span class="s5">) {</span>
+            <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s1">current</span><span class="s4">-&gt;</span><span class="s1">data </span><span class="s4">&lt;&lt; </span><span class="s2">&quot; &quot;</span><span class="s4">;</span>
+            <span class="s1">current </span><span class="s4">= </span><span class="s1">current</span><span class="s4">-&gt;</span><span class="s1">next</span><span class="s4">;</span>
+        <span class="s5">}</span>
+
+        <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s1">endl</span><span class="s4">;</span>
+    <span class="s5">}</span>
+
+    <span class="s3">void </span><span class="s1">splitIntoTwo</span><span class="s5">(</span><span class="s1">List </span><span class="s4">&amp;</span><span class="s1">list1</span><span class="s4">, </span><span class="s1">List </span><span class="s4">&amp;</span><span class="s1">list2</span><span class="s5">) {</span>
+        <span class="s3">if </span><span class="s5">(</span><span class="s1">head </span><span class="s4">== </span><span class="s3">nullptr </span><span class="s4">|| </span><span class="s1">count </span><span class="s4">== </span><span class="s6">0</span><span class="s5">) {</span>
+            <span class="s7">// Lista original vazia, não há nada para dividir.</span>
+            <span class="s3">return</span><span class="s4">;</span>
+        <span class="s5">}</span>
+
+        <span class="s3">int </span><span class="s1">initial_size </span><span class="s4">= </span><span class="s1">count</span><span class="s4">;</span>
+        <span class="s3">int </span><span class="s1">new_size </span><span class="s4">= </span><span class="s1">initial_size </span><span class="s4">/ </span><span class="s6">2</span><span class="s4">;</span>
+
+        <span class="s1">Node </span><span class="s4">*</span><span class="s1">current </span><span class="s4">= </span><span class="s1">head</span><span class="s4">;</span>
+        <span class="s1">Node </span><span class="s4">*</span><span class="s1">previous </span><span class="s4">= </span><span class="s3">nullptr</span><span class="s4">;</span>
+
+        <span class="s7">// Percorre até a metade da lista</span>
+        <span class="s3">int </span><span class="s1">count </span><span class="s4">= </span><span class="s6">0</span><span class="s4">;</span>
+        <span class="s3">while </span><span class="s5">(</span><span class="s1">count </span><span class="s4">&lt; </span><span class="s1">new_size</span><span class="s5">) {</span>
+            <span class="s1">previous </span><span class="s4">= </span><span class="s1">current</span><span class="s4">;</span>
+            <span class="s1">current </span><span class="s4">= </span><span class="s1">current</span><span class="s4">-&gt;</span><span class="s1">next</span><span class="s4">;</span>
+            <span class="s1">count</span><span class="s4">++;</span>
+        <span class="s5">}</span>
+
+        <span class="s7">// Divide a lista</span>
+        <span class="s3">if </span><span class="s5">(</span><span class="s1">previous </span><span class="s4">!= </span><span class="s3">nullptr</span><span class="s5">) {</span>
+            <span class="s7">// Atualiza o próximo do último nó da primeira lista para nullptr</span>
+            <span class="s1">previous</span><span class="s4">-&gt;</span><span class="s1">next </span><span class="s4">= </span><span class="s3">nullptr</span><span class="s4">;</span>
+
+            <span class="s7">// Configura a cabeça da segunda lista</span>
+            <span class="s1">list2</span><span class="s4">.</span><span class="s1">head </span><span class="s4">= </span><span class="s1">current</span><span class="s4">;</span>
+            <span class="s1">list2</span><span class="s4">.</span><span class="s1">count </span><span class="s4">= </span><span class="s1">initial_size </span><span class="s4">- </span><span class="s1">new_size</span><span class="s4">;</span>
+        <span class="s5">} </span><span class="s3">else </span><span class="s5">{</span>
+            <span class="s7">// Se a primeira lista for vazia, ajusta apenas a segunda lista</span>
+            <span class="s1">list2</span><span class="s4">.</span><span class="s1">head </span><span class="s4">= </span><span class="s1">current</span><span class="s4">;</span>
+            <span class="s1">list2</span><span class="s4">.</span><span class="s1">count </span><span class="s4">= </span><span class="s1">initial_size</span><span class="s4">;</span>
+        <span class="s5">}</span>
+
+        <span class="s7">// Configura a cabeça e o tamanho da primeira lista</span>
+        <span class="s1">list1</span><span class="s4">.</span><span class="s1">head </span><span class="s4">= </span><span class="s1">head</span><span class="s4">;</span>
+        <span class="s1">list1</span><span class="s4">.</span><span class="s1">count </span><span class="s4">= </span><span class="s1">new_size</span><span class="s4">;</span>
+
+        <span class="s7">// Limpa a lista original</span>
+        <span class="s1">head </span><span class="s4">= </span><span class="s3">nullptr</span><span class="s4">;</span>
+        <span class="s1">count </span><span class="s4">= </span><span class="s6">0</span><span class="s4">;</span>
+    <span class="s5">}</span>
+<span class="s5">}</span><span class="s4">;</span>
+
+<span class="s3">int </span><span class="s1">main</span><span class="s5">() {</span>
+    <span class="s1">List list</span><span class="s4">;</span>
+    <span class="s1">List list1</span><span class="s4">;</span>
+    <span class="s1">List list2</span><span class="s4">;</span>
+
+
+    <span class="s1">list</span><span class="s4">.</span><span class="s1">push</span><span class="s5">(</span><span class="s6">1</span><span class="s5">)</span><span class="s4">;</span>
+    <span class="s1">list</span><span class="s4">.</span><span class="s1">push</span><span class="s5">(</span><span class="s6">2</span><span class="s5">)</span><span class="s4">;</span>
+    <span class="s1">list</span><span class="s4">.</span><span class="s1">push</span><span class="s5">(</span><span class="s6">3</span><span class="s5">)</span><span class="s4">;</span>
+    <span class="s1">list</span><span class="s4">.</span><span class="s1">push</span><span class="s5">(</span><span class="s6">3</span><span class="s5">)</span><span class="s4">;</span>
+    <span class="s1">list</span><span class="s4">.</span><span class="s1">push</span><span class="s5">(</span><span class="s6">4</span><span class="s5">)</span><span class="s4">;</span>
+    <span class="s1">list</span><span class="s4">.</span><span class="s1">push</span><span class="s5">(</span><span class="s6">5</span><span class="s5">)</span><span class="s4">;</span>
+    <span class="s1">list</span><span class="s4">.</span><span class="s1">push</span><span class="s5">(</span><span class="s6">5</span><span class="s5">)</span><span class="s4">;</span>
+    <span class="s1">list</span><span class="s4">.</span><span class="s1">push</span><span class="s5">(</span><span class="s6">5</span><span class="s5">)</span><span class="s4">;</span>
+    <span class="s1">list</span><span class="s4">.</span><span class="s1">push</span><span class="s5">(</span><span class="s6">5</span><span class="s5">)</span><span class="s4">;</span>
+
+    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Tamanho da lista: &quot; </span><span class="s4">&lt;&lt; </span><span class="s1">list</span><span class="s4">.</span><span class="s1">size</span><span class="s5">() </span><span class="s4">&lt;&lt; </span><span class="s1">endl</span><span class="s4">;</span>
+    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Lista antes de ser filtrada:&quot; </span><span class="s4">&lt;&lt; </span><span class="s1">endl</span><span class="s4">;</span>
+    <span class="s1">list</span><span class="s4">.</span><span class="s1">print</span><span class="s5">()</span><span class="s4">;</span>
+
+    <span class="s1">list</span><span class="s4">.</span><span class="s1">removeDuplicates</span><span class="s5">()</span><span class="s4">;</span>
+
+    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s1">endl</span><span class="s4">;</span>
+
+    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Tamanho da lista: &quot; </span><span class="s4">&lt;&lt; </span><span class="s1">list</span><span class="s4">.</span><span class="s1">size</span><span class="s5">() </span><span class="s4">&lt;&lt; </span><span class="s1">endl</span><span class="s4">;</span>
+    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Lista depois de ser filtrada:&quot; </span><span class="s4">&lt;&lt; </span><span class="s1">endl</span><span class="s4">;</span>
+    <span class="s1">list</span><span class="s4">.</span><span class="s1">print</span><span class="s5">()</span><span class="s4">;</span>
+
+    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s1">endl</span><span class="s4">;</span>
+
+    <span class="s1">list</span><span class="s4">.</span><span class="s1">reverse</span><span class="s5">()</span><span class="s4">;</span>
+
+    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Lista depois de ser invertida:&quot; </span><span class="s4">&lt;&lt; </span><span class="s1">endl</span><span class="s4">;</span>
+    <span class="s1">list</span><span class="s4">.</span><span class="s1">print</span><span class="s5">()</span><span class="s4">;</span>
+
+    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s1">endl</span><span class="s4">;</span>
+
+    <span class="s1">list</span><span class="s4">.</span><span class="s1">splitIntoTwo</span><span class="s5">(</span><span class="s1">list1</span><span class="s4">, </span><span class="s1">list2</span><span class="s5">)</span><span class="s4">;</span>
+    
+    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Lista 1:&quot; </span><span class="s4">&lt;&lt; </span><span class="s1">endl</span><span class="s4">;</span>
+    <span class="s1">list1</span><span class="s4">.</span><span class="s1">print</span><span class="s5">()</span><span class="s4">;</span>
+
+    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s1">endl</span><span class="s4">;</span>
+
+    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s2">&quot;Lista 2:&quot; </span><span class="s4">&lt;&lt; </span><span class="s1">endl</span><span class="s4">;</span>
+    <span class="s1">list2</span><span class="s4">.</span><span class="s1">print</span><span class="s5">()</span><span class="s4">;</span>
+
+    <span class="s1">cout </span><span class="s4">&lt;&lt; </span><span class="s1">endl</span><span class="s4">;</span>
+
+    <span class="s3">return </span><span class="s6">0</span><span class="s4">;</span>
+<span class="s5">}</span></pre>
+</body>
+</html>

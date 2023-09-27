@@ -1,0 +1,3 @@
+/home/medivh/CLionProjects/LDS-List/cmake-build-debug/CMakeFiles/LDS_List.dir
+/home/medivh/CLionProjects/LDS-List/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/medivh/CLionProjects/LDS-List/cmake-build-debug/CMakeFiles/rebuild_cache.dir
